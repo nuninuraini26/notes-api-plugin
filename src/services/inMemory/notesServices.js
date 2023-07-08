@@ -19,20 +19,20 @@ class NotesService {
         this._notes.push(newNote)
         const isSuccess = this._notes.filter((note) => note.id === id).length > 0
         if(!isSuccess) {
-            throw new Error('Note is failed to add.')
+            throw new Error('note is failed to add')
         }
         
         return id
     }
 
-    getNote() {
+    getNotes() {
         return this._notes
     }
 
     getNoteById(id) {
         const note = this._notes.filter((n) => n.id === id)[0]
         if(!note) {
-            throw new Error('Note is not found.')
+            throw new Error('note is not found')
         }
 
         return note
@@ -42,7 +42,7 @@ class NotesService {
         const index = this._notes.findIndex((note) => note.id === id)
         const updatedAt = new Date().toISOString()
         if(index === -1) {
-            throw new Error('Failed to update the note. Note is not found.')
+            throw new Error('note is not found')
         }
         this._notes[index] = {
             ...this._notes[index],
@@ -53,10 +53,10 @@ class NotesService {
         }
     }
 
-    deleteNotebyId(id) {
+    deleteNoteById(id) {
         const index = this._notes.findIndex((note) => note.id === id)
         if(index === -1) {
-            throw new Error('Failed to delete the note. Note is not found')
+            throw new Error('note is not found')
         }
 
         this._notes.splice(index, 1)

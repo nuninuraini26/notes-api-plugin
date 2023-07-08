@@ -10,34 +10,35 @@ class NotesHandler {
 
     postNoteHandler(request, h) {
         try {
-            const {title = 'untitled', tags, body} = request.payload
-            const noteId = this._service.addNote({title, tags, body})
+            const { title = 'untitled', body, tags } = request.payload
+            const noteId = this._service.addNote({ title, body, tags })
             const response = h.response({
                 status: 'success',
-                message: 'note is successfully added added.',
+                message: 'note is successfully added',
                 data: {
-                    noteId
-                }
+                    noteId,
+                },
             })
             response.code(201)
             return response
-        } catch(error) {
+        } catch (error) {
             const response = h.response({
                 status: 'fail',
-                message:error.message
+                message: error.message,
             })
             response.code(400)
             return response
         }
     }
+ 
 
     getNotesHandler() {
         const notes = this._service.getNotes()
         return {
             status: 'success',
             data: {
-                notes
-            }
+                notes,
+            },
         }
     }
 
@@ -67,7 +68,7 @@ class NotesHandler {
             this._service.editNoteById(id, request.payload) 
             return {
                 status: 'success',
-                message: 'note is successfully added'
+                message: 'note is successfully updated'
             }
         } catch(error) {
             const response = h.response({
@@ -85,7 +86,7 @@ class NotesHandler {
             this._service.deleteNoteById(id) 
             return {
                 status: 'success',
-                message: 'note has been deletted.'
+                message: 'note is successfully deleted'
             }
         } catch(error) {
             const response = h.response({
