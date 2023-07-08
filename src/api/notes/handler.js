@@ -14,7 +14,7 @@ class NotesHandler {
             const noteId = this._service.addNote({title, tags, body})
             const response = h.response({
                 status: 'success',
-                message: 'Note has been added.',
+                message: 'note is successfully added added.',
                 data: {
                     noteId
                 }
@@ -67,7 +67,7 @@ class NotesHandler {
             this._service.editNoteById(id, request.payload) 
             return {
                 status: 'success',
-                message: 'note has been updated.'
+                message: 'note is successfully added'
             }
         } catch(error) {
             const response = h.response({
