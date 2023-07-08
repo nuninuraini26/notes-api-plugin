@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start_dev": "nodemon ./src/server.js",
+    "start_prod": "node ./src/server.js NODE_ENV=production",
+    "lint": "eslint ./"
   },
   "author": "",
   "license": "ISC",
