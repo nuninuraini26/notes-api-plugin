@@ -1,4 +1,6 @@
 const {nanoid} = require('nanoid')
+const InvariantError = require('../../exceptions/invariant-error')
+const NotFoundError = require('../../exceptions/notfound-error')
 
 class NotesService {
     constructor() {
@@ -19,7 +21,7 @@ class NotesService {
         this._notes.push(newNote)
         const isSuccess = this._notes.filter((note) => note.id === id).length > 0
         if(!isSuccess) {
-            throw new Error('note is failed to add')
+            throw new InvariantError('note is failed to add')
         }
         
         return id
@@ -32,7 +34,7 @@ class NotesService {
     getNoteById(id) {
         const note = this._notes.filter((n) => n.id === id)[0]
         if(!note) {
-            throw new Error('note is not found')
+            throw new NotFoundError('note is not found')
         }
 
         return note
@@ -42,7 +44,7 @@ class NotesService {
         const index = this._notes.findIndex((note) => note.id === id)
         const updatedAt = new Date().toISOString()
         if(index === -1) {
-            throw new Error('note is not found')
+            throw new NotFoundError('note is not found')
         }
         this._notes[index] = {
             ...this._notes[index],
@@ -56,7 +58,7 @@ class NotesService {
     deleteNoteById(id) {
         const index = this._notes.findIndex((note) => note.id === id)
         if(index === -1) {
-            throw new Error('note is not found')
+            throw new NotFoundError('note is not found')
         }
 
         this._notes.splice(index, 1)
