@@ -1,3 +1,4 @@
+/*add mapping to database*/
 const mapDBToModel = ({ 
     id,
     title,

@@ -1,3 +1,4 @@
+/*arrange migration to database*/
 /* eslint-disable camelcase */
 
 exports.shorthands = undefined

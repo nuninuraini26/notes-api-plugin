@@ -1,3 +1,4 @@
+/* add postgre notesServices scripts */
 const {Pool} = require('pg')
 const InvariantError = require('../../exceptions/invariant-error')
 const { nanoid }= require('nanoid')

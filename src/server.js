@@ -1,3 +1,4 @@
+/*Change import modules directory for NotesService*/
 require('dotenv').config()
 const hapi = require('@hapi/hapi')
 const notes = require('./api/notes')

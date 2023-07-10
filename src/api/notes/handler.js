@@ -1,3 +1,5 @@
+/* update handler and set to asyncronous mode */
+
 const ClientError = require('../../exceptions/client-error')
 class NotesHandler {
     constructor(service, validator) {
